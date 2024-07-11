@@ -4,6 +4,7 @@ import AddTask from '../components/AddTask.vue';
 import EditTask from '../components/EditTask.vue';
 
 const routes = [
+  { path: '/', component: TaskList },
   { path: '/tasks', component: TaskList },
   { path: '/add', component: AddTask },
   { path: '/tasks/edit/:id', component: EditTask }
