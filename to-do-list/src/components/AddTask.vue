@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1>Add Task</h1>
-    <form @submit.prevent="addTask">
+    <h1 class="d-flex justify-content-center align-items-center mb-4">Add Task</h1>
+    <form class="d-flex flex-column justify-content-center align-items-center gap-2" @submit.prevent="addTask">
       <div>
-        <label for="title">Title:</label>
-        <input type="text" v-model="task.title" />
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" class="form-control" v-model="task.title" />
       </div>
       <div>
-        <label for="description">Description:</label>
-        <input type="text" v-model="task.description" />
+        <label for="description" class="form-label">Description:</label>
+        <input type="text" class="form-control" v-model="task.description" />
       </div>
-      <button type="submit">Add Task</button>
+      <button class="btn btn-success" type="submit">Add Task</button>
     </form>
   </div>
 </template>

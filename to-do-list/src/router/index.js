@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import TaskList from '../components/TaskList.vue';
 import AddTask from '../components/AddTask.vue';
+import EditTask from '../components/EditTask.vue';
 
 const routes = [
-  { path: '/tasks', component: TaskList }, // Adicione esta linha para a rota /tasks
-  { path: '/add', component: AddTask }
+  { path: '/tasks', component: TaskList },
+  { path: '/add', component: AddTask },
+  { path: '/tasks/edit/:id', component: EditTask }
 ];
 
 const router = createRouter({

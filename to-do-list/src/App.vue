@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/tasks">Task List</router-link>
-      <router-link to="/add">Add Task</router-link>
+    <nav class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <router-link class="nav-link" to="/tasks">Task List</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/add">Add Task</router-link>
+        </li>
+      </ul>
     </nav>
     <router-view />
   </div>
@@ -13,12 +19,3 @@ export default {
   name: 'App'
 };
 </script>
-
-<style>
-nav {
-  margin-bottom: 10px;
-}
-nav a {
-  margin-right: 10px;
-}
-</style>
