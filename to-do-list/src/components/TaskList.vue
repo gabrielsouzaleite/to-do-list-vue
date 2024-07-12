@@ -11,9 +11,10 @@
         >
           {{ task.title }}
           <div>
-            <button class="btn btn-success me-1" @click="completeTask(task.id)" v-if="!task.completed">Completar</button>
-            <button class="btn btn-primary me-1" @click="editTask(task.id)">Editar</button>
-            <button class="btn btn-danger" @click="deleteTask(task.id)">Excluir</button>
+            <button class="btn btn-success me-1" @click="toggleCompleteTask(task.id)" v-if="!task.completed">Completar</button>
+            <button class="btn btn-warning me-1" @click="toggleCompleteTask(task.id)" v-if="task.completed">Descompletar</button>
+            <button class="btn btn-primary me-1" @click="editTask(task.id)" v-if="!task.completed">Editar</button>
+            <button class="btn btn-danger" @click="deleteTask(task.id)" v-if="!task.completed">Excluir</button>
           </div>
         </li>
       </ul>
@@ -45,15 +46,15 @@ export default {
     async deleteTask(id) {
       try {
         await axios.delete(`http://localhost:3333/tasks/${id}`);
-        this.fetchTasks(); // Atualiza a lista de tarefas após a exclusão
+        this.fetchTasks();
       } catch (error) {
         console.error('Error deleting task:', error);
       }
     },
-    async completeTask(id) {
+    async toggleCompleteTask(id) {
       try {
         await axios.patch(`http://localhost:3333/tasks/${id}/complete`);
-        this.fetchTasks(); // Atualiza a lista de tarefas após marcar como concluída
+        this.fetchTasks(); 
       } catch (error) {
         console.error('Error completing task:', error);
       }

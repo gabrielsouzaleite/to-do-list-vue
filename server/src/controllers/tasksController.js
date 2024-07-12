@@ -31,9 +31,13 @@ const updateTask = async (req, res) => {
   return res.status(204).json();
 };
 
-const completeTask = async (req, res) => {
+const toggleCompleteTask = async (req, res) => {
   const { id } = req.params;
-  await Task.update({ completed: true }, { where: { id } });
+  const task = await Task.findByPk(id);
+  if (!task) {
+    return res.status(404).json({ message: 'Task not found' });
+  }
+  await Task.update({ completed: !task.completed }, { where: { id } });
   return res.status(204).json();
 }
 
@@ -43,5 +47,5 @@ module.exports = {
   createTask,
   deleteTask,
   updateTask,
-  completeTask
+  toggleCompleteTask
 };
